@@ -1,0 +1,550 @@
+/*removes text highlighting when the text is selected*/
+::selection {
+  background: RGB(236, 212, 187);
+}
+
+/* removes border of input and textarea fields - when focused/not focused.*/
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+/*defines custom fonts*/
+@font-face {
+  font-family: nunito;
+  src: url(assets/fonts/Nunito-Regular.ttf);
+}
+
+body {
+  font-family: nunito;
+  background: url(./assets/background/email-pattern_blurred.jpg);
+}
+
+.credits {
+  position: fixed;
+  bottom: 2px;
+  right: 2px;
+  font-size: 20px;
+}
+a:link {
+  color: rgb(60, 170, 195);
+  text-decoration: none;
+}
+a:hover {
+  color: rgb(60, 170, 195);
+  text-decoration: underline;
+}
+a:visited {
+  color: rgb(60, 170, 195);
+  text-decoration: none;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 50px;
+  color: black;
+  text-align: center;
+  padding: 2px 0;
+  border-radius: 6px;
+  font-size: 12px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -25px;
+  cursor: pointer;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip:hover {
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: rgb(209, 209, 211);
+}
+
+.mainContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100vh;
+  width: 50vw;
+  background-color: RGB(255, 255, 255);
+  background: url(./assets/background/so-white.png);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.subContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 96%;
+  width: 96%;
+  /* height: 90%;
+  width: 90%; */
+  margin: auto;
+  background-color: RGB(255, 255, 255);
+  background: url(./assets/background/so-white.png);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.appHeader {
+  margin-top: 0px;
+  background-color: RGB(255, 255, 255);
+  background: url(./assets/background/so-white.png);
+  height: 15%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.appTitle {
+  margin-top: 0px;
+  height: 60%;
+  width: 100%;
+}
+
+.title {
+  margin-top: 0px;
+}
+
+.appHeaderTools {
+  margin-top: 0px;
+  height: 40%;
+  /* background-color: rgb(235, 235, 235); */
+  background-color: rgba(250, 250, 250, 255);
+  border-radius: 10px;
+}
+
+.createNoteIcon {
+  float: right;
+  margin-right: 10px;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.notesCards {
+  background-color: rgba(250, 250, 250, 255);
+  border-radius: 10px;
+  height: 85%;
+  width: 100%;
+  margin-top: 20px;
+  overflow: auto; /* enables vertical scrolling */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.notesCards::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.notesCards {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.noNotes {
+  height: inherit;
+  width: 100%;
+  border-radius: 10px;
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(250, 250, 250, 255);
+}
+
+.noNotesImage {
+  background: url(./assets/icons/icons8-ghost-64.png) no-repeat center;
+  margin: 0px auto;
+  height: 100px;
+  width: 200px;
+  text-align: center;
+  background-color: rgba(250, 250, 250, 255);
+  /* line-height: 50px; */
+  border-radius: 10px;
+}
+
+.noNotesText {
+  height: 50px;
+  width: 200px;
+  text-align: center;
+  background-color: rgba(250, 250, 250, 255);
+  line-height: 50px;
+  border-radius: 10px;
+}
+
+.card {
+  margin-top: 20px;
+  background-color: RGB(255, 255, 255);
+  height: 30%;
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: default;
+}
+
+.cardHeader {
+  background-color: RGB(201, 233, 245);
+  height: 20%;
+  width: 100%;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 1px solid;
+  border-bottom-color: RGB(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.separatorIcon .material-icons {
+  font-size: 5px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.cardTitle {
+  margin-left: 10px;
+  max-width: 60%;
+  overflow: hidden; /* wraps text to fit to view */
+}
+
+.createdTime {
+  font-size: 18px;
+  margin-left: 5px;
+}
+
+.deleteCard .material-icons {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.deleteCard .material-icons:hover {
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: rgb(245, 245, 245);
+}
+
+.deleteCard {
+  margin-left: auto;
+}
+
+.cardBody {
+  background-color: RGB(201, 233, 245);
+  height: 100%;
+  width: 100%;
+  border-radius: 0px 0px 10px 10px;
+  overflow: hidden; /* wraps text to fit to view */
+}
+
+.cardBodyContent {
+  height: 98%;
+  width: 98%;
+  font-size: 15px; /*h6*/
+  white-space: pre-wrap;
+  margin: 0px 5px 5px 5px;
+  overflow: hidden; /* wraps text to fit to view */
+}
+
+/* noteCard design */
+.newNoteContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100vh;
+  width: 50vw;
+  background-color: RGB(255, 255, 255);
+  background: url(./assets/background/so-white.png);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.newNoteHeader {
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translate(-50%, -50%);
+  height: 10%;
+  width: 100%;
+  background-color: RGB(255, 255, 255);
+  background: url(./assets/background/so-white.png);
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 1px solid;
+  border-bottom-color: RGB(66, 170, 195);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.newNoteTitle {
+  height: 60%;
+  width: 60%;
+  margin-left: 10px;
+  text-align: left;
+  background: url(./assets/background/so-white.png);
+  text-overflow: ellipsis;
+}
+
+.newNoteTitleText {
+  height: 100%;
+  width: 100%;
+  font-size: 4vh;
+  border: none;
+  border-color: transparent;
+  background-color: rgba(250, 250, 250, 255);
+  border-radius: 10px;
+  text-overflow: ellipsis;
+}
+
+.saveNewNote {
+  float: right;
+  margin-right: 10px;
+}
+
+.saveNewNote .material-icons {
+  font-size: 3vh;
+  top: 50%;
+  left: 50%;
+}
+
+.newNoteBody {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 90%;
+  width: 100%;
+  background-color: RGB(255, 255, 255);
+  background: url(./assets/background/so-white.png);
+  border-radius: 10px;
+}
+
+.newNoteBodyTextArea {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 92%;
+  width: 95%;
+  min-height: 92%;
+  min-width: 95%;
+  background-color: RGB(202, 231, 232);
+  margin: 10px auto;
+  padding: 10px;
+  border: none;
+  border-color: transparent;
+}
+
+.OpenNoteCardOptions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  float: right;
+}
+
+.deleteNote {
+  float: right;
+  margin-right: 10px;
+}
+
+.deleteNote .material-icons {
+  font-size: 3vh;
+  top: 50%;
+  left: 50%;
+}
+
+.closeNote {
+  float: right;
+}
+
+.closeNote .material-icons {
+  font-size: 3vh;
+  top: 50%;
+  left: 50%;
+}
+
+.material-icons {
+  padding: 3px; /* balances height and width for hover effect */
+}
+
+/* popup design*/
+
+.popup {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 20vh;
+  width: 20vw;
+  background-color: RGB(255, 255, 255);
+  background: url(./assets/background/so-white.png);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.popUpHeader {
+  height: 60%;
+  width: 100%;
+}
+
+.popUpHeaderText {
+  margin: 30px auto;
+  text-align: center;
+}
+
+.popUpOptions {
+  display: flex;
+  flex-direction: row;
+  height: 40%;
+  width: 100%;
+}
+.popUpOptionYes {
+  margin-top: 0px;
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  border-bottom-left-radius: 10px;
+  border: none;
+}
+
+.popUpOptionYes:hover {
+  background-color: rgb(209, 209, 211);
+}
+.popUpOptionNo {
+  margin-top: 0px;
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  border-bottom-right-radius: 10px;
+  border: none;
+}
+.popUpOptionNo:hover {
+  background-color: rgb(209, 209, 211);
+}
+
+/* app log design */
+.appLog {
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 5vh;
+  width: 30vw;
+  background-color: RGB(255, 255, 255);
+  background: url(./assets/background/so-white.png);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.appLogText {
+  font-size: 2vh;
+}
+
+/*Responsiveness*/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .mainContainer {
+    height: 90vh;
+    width: 100vw;
+  }
+  .newNoteContainer {
+    height: 90vh;
+    width: 100vw;
+  }
+  .popup {
+    height: 25vh;
+    width: 50vw;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .mainContainer {
+    height: 90vh;
+    width: 100vw;
+  }
+  .newNoteContainer {
+    height: 90vh;
+    width: 100vw;
+  }
+  .popup {
+    height: 25vh;
+    width: 50vw;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .mainContainer {
+    height: 90vh;
+    width: 100vw;
+  }
+  .newNoteContainer {
+    height: 90vh;
+    width: 100vw;
+  }
+  .popup {
+    height: 20vh;
+    width: 20vw;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .mainContainer {
+    height: 100vh;
+    width: 50vw;
+  }
+  .newNoteContainer {
+    height: 100vh;
+    width: 50vw;
+  }
+  .popup {
+    height: 20vh;
+    width: 20vw;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .mainContainer {
+    height: 100vh;
+    width: 50vw;
+  }
+  .newNoteContainer {
+    height: 100vh;
+    width: 50vw;
+  }
+  .popup {
+    height: 20vh;
+    width: 20vw;
+  }
+}
