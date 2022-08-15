@@ -1,4 +1,5 @@
 Notes is a note taking app built with Html, CSS and Vanilla JS. 📝⚡
+It uses browser's local storage to save notes.
 
 check it out 😄: https://notes-hq.netlify.app
 
